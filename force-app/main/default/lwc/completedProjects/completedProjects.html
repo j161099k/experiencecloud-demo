@@ -1,0 +1,38 @@
+<template>
+    <template if:true={projects}>
+        <div class="slds-grid slds-gutters slds-wrap">
+            <template for:each={projects} for:item="project">
+
+                <template if:true={error}>
+                    {error}
+                </template>
+
+                <lightning-tile key={project.Id}
+                    class="slds-size_1-of-3 slds-col slds-m-vertical_x-small slds-size_full">
+
+                    <h1 class="slds-is-absolute slds-text-title_bold slds-p-horizontal-medium"
+                        style="z-index: 10; color: #ffffff;">
+                        {project.Name}
+                    </h1>
+                    <div class="slds-is-absolute slds-size_full"
+                        style="background-color: rgba(0,0,0, 0.3); z-index: 9; width: 100%; height: 100%;">
+                    </div>
+                    <!-- <p class="slds-p-horizontal_small slds-is-absolute slds-align_bottom slds-text-title_bold" style="z-index: 10;">
+                        <template if:true={project.IsSupported__c}>
+                            <span style="color: #06b206;">This project receives active support</span>
+                        </template>
+                        <template if:false={project.IsSupported__c}>
+                            <span style="color: #e01414;">This project is no longer being supported</span>
+                        </template>
+                    </p> -->
+                    <a href={project.Url__c} target="_blank" style="z-index: 1;">
+                        <!-- slot -->
+                        <img src="https://picsum.photos/200/100/" alt={project.Name} class="slds-size_full">
+
+                    </a>
+                </lightning-tile>
+
+            </template>
+        </div>
+    </template>
+</template>
